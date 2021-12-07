@@ -1,0 +1,103 @@
+{% extends 'base.html' %} {% block main%}
+
+<div class="card m-1">
+  <div class="card-body">
+    <a
+      href="{% url 'my_education' %}"
+      class="btn btn-primary float-right btn btn-sm"
+      >View Education Detail</a
+    >
+    <h5 class="p-2" style="border-bottom: 2px solid danger">
+      Edit My Education | {{request.user}}
+    </h5>
+  </div>
+  <div class="container-fluid">
+    <form method="post">
+      {% csrf_token %}
+      <table class="table table-bordered shadow">
+        <thead>
+        <tr>
+          <th>Post Graduation Course Name</th>
+          <th>Post Graduate School College</th>
+          <th>Year of Passing in Graduation</th>
+          <th>Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row"><input type="text" name="coursepg" class="form-control" value="{{education.coursepg}}"></td>
+          <td scope="row"><input type="text" name="schoolclgpg" class="form-control" value="{{education.schoolclgpg}}"></td>
+          <td scope="row"><input type="text" name="yearofpassingpg" class="form-control" value="{{education.yearofpassingpg}}"></td>
+          <td scope="row"><input type="text" name="percentagepg" class="form-control" value="{{education.percentagepg}}"></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th>Graduation Course Name</th>
+          <th>Graduate School College</th>
+          <th>Year of Passing in Graduation</th>
+          <th>Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row"><input type="text" name="coursegra" class="form-control" value="{{education.coursegra}}"></td>
+          <td scope="row"><input type="text" name="schoolclggra" class="form-control" value="{{education.schoolclggra}}"></td>
+          <td scope="row"><input type="text" name="yearofpassinggra" class="form-control" value="{{education.yearofpassinggra}}"></td>
+          <td scope="row"><input type="text" name="percentagepggra" class="form-control" value="{{education.percentagepggra}}"></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th>SSC ourse Name</th>
+          <th>SSC School College</th>
+          <th>Year of Passing in SSC</th>
+          <th>Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row"><input type="text" name="coursessc" class="form-control" value="{{education.coursessc}}"></td>
+          <td scope="row"><input type="text" name="schoolclgssc" class="form-control" value="{{education.schoolclgssc}}"></td>
+          <td scope="row"><input type="text" name="yearofpassingssc" class="form-control" value="{{education.yearofpassingssc}}"></td>
+          <td scope="row"><input type="text" name="percentagepgssc" class="form-control" value="{{education.percentagepgssc}}"></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <th>HSC Course Name</th>
+          <th>HSC School College</th>
+          <th>Year of Passing in HSC</th>
+          <th>Percentage</th>
+        </tr>
+      </thead>
+      <tbody>
+          <td scope="row"><input type="text" name="coursehsc" class="form-control" value="{{education.coursehsc}}"></td>
+          <td scope="row"><input type="text" name="schoolclghsc" class="form-control" value="{{education.schoolclghsc}}"></td>
+          <td scope="row"><input type="text" name="yearofpassinghsc" class="form-control" value="{{education.yearofpassinghsc}}"></td>
+          <td scope="row"><input type="text" name="percentagehsc" class="form-control" value="{{education.percentagehsc}}"></td>
+        </tr>
+      </tbody>
+        <tr>
+      </table>
+      <input type="submit" value="Submit" class="btn btn-primary float-right btn btn-sm px-2 mb-2">
+    </form>
+  </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert('Education Updated Successful');
+    window.location = ('{% url 'my_education' %}')
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong');
+    window.location = ('{% url 'login' %}')
+</script>
+{% endif %}
+
+
+{% endblock %}
